@@ -2,6 +2,7 @@ import express from "express";
 import usersRouter from "./controller/users";
 import ridersRouter from "./controller/riders";
 import addressesRouter from "./controller/addresses";
+import uploadRouter from "./controller/upload";
 import { conn } from "./lib/db";
 
 export const app = express();
@@ -34,3 +35,7 @@ app.get('/test-db', async (req, res) => {
 app.use("/users", usersRouter);
 app.use("/riders", ridersRouter);
 app.use("/addresses", addressesRouter);
+
+app.use("/upload", uploadRouter);
+app.use("/uploads", express.static("uploads"));
+
